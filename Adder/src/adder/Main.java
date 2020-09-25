@@ -1,7 +1,7 @@
-package adder;
-import java.util.Scanner;
+ //package adder;
 
-public class Main {
+ 
+ public class Main {
 
     public static void main(String[] args) {
 
@@ -15,21 +15,26 @@ public class Main {
     }
 
     private static int addArguments(String[] args) {
-        int arb,sum=0;
-                  
-        Scanner sc=new Scanner(System.in);
-        System.out.println("Enter the arbitrary number you want sum of: ");
-        arb = sc.nextInt();
-        int a[]=new int[arb]; 
-
-        System.out.println("enter the "+arb+" numbers ");
-        for(int i=0;i<arb;i++)
-        {      
-      System.out.println("enter  number "+(i+1)+":");
-                a[i]=sc.nextInt();
-                sum += a[i];
+        
+        int arb =0, sum=0, posOrNeg =0;
+        
+        if(args[0].equals("-"))
+        {
+            arb=1;
+            posOrNeg=1; // for negative numbers we make it 1
+            
         }
-      return sum;
-        //return Integer.valueOf(args[0]) + Integer.valueOf(args[1]);
+        
+        for(int i= arb ;i<args.length;i++)
+        {
+            if(posOrNeg==0)
+                sum+=Integer.valueOf(args[i]) ; // for positive numbers
+
+            if(posOrNeg==1)
+                sum-=Integer.valueOf(args[i]) ; // for negative numbers
+    
+        }
+
+        return sum;
     }
 }
